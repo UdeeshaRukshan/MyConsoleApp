@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Bson.Serialization.Attributes;
@@ -11,7 +13,7 @@ namespace MyConsoleApp
         {
             // Replace <USERNAME> and <PASSWORD> with your MongoDB Atlas credentials
             const string connectionUri =
-                "mongodb+srv://udeesha:udeesha@cluster0.wenl8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+                "";
 
             var settings = MongoClientSettings.FromConnectionString(connectionUri);
 
@@ -22,7 +24,7 @@ namespace MyConsoleApp
             var client = new MongoClient(settings);
 
 
-            // Send a ping to confirm a successful connection
+       
             try
             {
                 var result = client.GetDatabase("admin").RunCommand<BsonDocument>(new BsonDocument("ping", 1));
@@ -79,6 +81,14 @@ Price = 289
                 //Insert books to the "BookStore" collection one by one
                 foreach (BookStore bookStore in bookStores)
                 {
+                    
+                    var existingBook = collection.AsQueryable().FirstOrDefault(b => b.ISBN == bookStore.ISBN);
+                    if (existingBook != null)
+                    {
+                        Console.WriteLine($"Book with ISBN {bookStore.ISBN} already exists. Skipping insertion.");
+                        continue;
+                    }
+
                     collection.InsertOne(bookStore);
                 }
                 Console.WriteLine("Books added, check your new book collection!");

@@ -21,3 +21,4 @@
 /Users/udeesharukshan/Documents/MOngodb/MyConsoleApp/bin/Debug/net8.0/ZstdSharp.dll
 /Users/udeesharukshan/Documents/MOngodb/MyConsoleApp/obj/Debug/net8.0/MyConsoleApp.csproj.AssemblyReference.cache
 /Users/udeesharukshan/Documents/MOngodb/MyConsoleApp/obj/Debug/net8.0/MyConsol.4CA403AE.Up2Date
+/Users/udeesharukshan/Documents/MOngodb/MyConsoleApp/obj/Debug/net8.0/MyConsoleApp.sourcelink.json
